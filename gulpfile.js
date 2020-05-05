@@ -23,6 +23,6 @@ gulp.task('min', function (done) {
   gulp.src('src/css/*.css')
       .pipe(cssmin())
       .pipe(rename({suffix: '.min'}))
-      .pipe(gulp.dest('dist'));
+      .pipe(gulp.dest('src/css'));
       done();
 });
