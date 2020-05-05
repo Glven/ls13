@@ -19,9 +19,10 @@ gulp.task('serve', function () {
     gulp.watch("*.html").on("change", reload);
 });
 
-gulp.task('min', function () {
+gulp.task('min', function (done) {
   gulp.src('src/css/*.css')
       .pipe(cssmin())
       .pipe(rename({suffix: '.min'}))
       .pipe(gulp.dest('dist'));
+      done();
 });
