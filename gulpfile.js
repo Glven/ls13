@@ -1,6 +1,8 @@
 var gulp        = require('gulp');
 var browserSync = require('browser-sync').create();
 var reload      = browserSync.reload;
+var cssmin      = require('gulp-cssmin');
+var rename      = require('gulp-rename');
 
 // Save a reference to the `reload` method
 
@@ -15,4 +17,11 @@ gulp.task('serve', function () {
     });
 
     gulp.watch("*.html").on("change", reload);
+});
+
+gulp.task('min', function () {
+  gulp.src('src/css/*.css')
+      .pipe(cssmin())
+      .pipe(rename({suffix: '.min'}))
+      .pipe(gulp.dest('dist'));
 });
